@@ -322,8 +322,10 @@ section {
 }
 
 .experience-details-container {
+  gap: 4rem;
+  height: 0%;
   display: flex;
-  justify-content: center;
+  justify-content: relative;
   flex-direction: column;
 }
 
