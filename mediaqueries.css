@@ -54,6 +54,7 @@
   }
   article {
     font-size: 1rem;
+    justify-content: left;
   }
   footer nav {
     height: fit-content;
