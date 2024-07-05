@@ -338,7 +338,7 @@ section {
   text-align: initial;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items: center;
+
   gap: 2.5rem;
   justify-content: space-around;
 }
