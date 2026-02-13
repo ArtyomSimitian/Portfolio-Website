@@ -8,6 +8,8 @@
 }
 
 body {
+  background-color: rgb(250, 249, 248);
+  /*off white*/
   font-family: "Poppins", sans-serif;
 }
 
@@ -51,10 +53,10 @@ a {
 }
 
 a:hover {
-  color: rgb(0, 140, 255); /*color when hovering*/
+  color: rgb(255, 117, 24); /*color when hovering*/
   text-decoration: underline; /* add underline to text */
   text-underline-offset: 0.8rem; /* offset of underline */
-  text-decoration-color: rgb(0, 140, 255);
+  text-decoration-color: rgb(255, 117, 24);
 }
 
 .logo {
@@ -288,13 +290,13 @@ section {
 .arrow {
   position: absolute;
   right: -5rem;
-  bottom: 12rem;
+  bottom: 34rem;
 }
 
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: white;
+  background-color: whitesmoke;
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
@@ -335,24 +337,21 @@ section {
 
 .article-container {
   display: flex;
-  text-align: initial;
   flex-wrap: wrap;
-  flex-direction: row;
-
   gap: 2.5rem;
   justify-content: space-around;
 }
 
-article {
-  display: flex;
-  width: 10rem;
-  justify-content: space-around;
-  gap: 0.5rem;
-}
+/*.article {*/
+/*  display: flex;*/
+/*  width: 10rem;*/
+/*  justify-content: space-around;*/
+/*  gap: 0.5rem;*/
+/*}*/
 
-article .icon {
-  cursor: default;
-}
+/*.article .icon {*/
+/*  cursor: default;*/
+/*}*/
 
 /* PROJECTS SECTION */
 
