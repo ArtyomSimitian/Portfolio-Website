@@ -194,6 +194,14 @@ section {
   margin: auto 0;
 }
 
+.section__pic-container img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
 /* PROFILE SECTION */
 
 #profile {

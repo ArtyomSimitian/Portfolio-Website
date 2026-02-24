@@ -65,8 +65,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
     height: auto;
     min-height: 70vh;
+    margin-bottom: 1rem;
+  }
+
+  .section__pic-container {
+    width: min(68vw, 240px);
+    height: auto;
+    margin: 0 auto 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .section__text {
@@ -121,12 +132,6 @@
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
-  }
-
-  .section__pic-container {
-    width: auto;
-    height: 46vw;
-    justify-content: center;
   }
 
   .section__text__p2 {
