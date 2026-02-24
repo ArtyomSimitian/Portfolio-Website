@@ -117,8 +117,8 @@ a:hover {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   border-radius: 20px;
   width: fit-content;
   max-height: 0;
@@ -127,6 +127,9 @@ a:hover {
   list-style: none;
   margin: 0;
   padding: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
 }
 
 .menu-links a {
