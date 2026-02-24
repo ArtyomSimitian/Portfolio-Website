@@ -1,454 +1,381 @@
-<link rel="icon" type="image/x-icon" href="./assets/AS_Favicon.png">
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8" />
     <meta name="google-site-verification" content="HE7vErKbV_JhMxJOqFtL7DJBVnJagsG5JhIIkmUOIis" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mediaqueries.css">
+
+    <link rel="icon" type="image/png" href="./assets/AS_Favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
 </head>
 <body>
-    <nav id= "desktop-nav">
-        <div class = "logo"> Artyom Simitian</div>
-        <div>
+<nav id="desktop-nav">
+    <div class="logo">Artyom Simitian</div>
+    <div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<nav id="hamburger-nav">
+    <div class="logo">Artyom Simitian</div>
+    <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="menu-links">
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section id="profile">
+    <div class="section__pic-container">
+        <img
+                src="./assets/Profile Picture Circle Original.png"
+                alt="Artyom Simitian Profile Picture"
+        />
+    </div>
+
+    <div class="section__text glass-panel">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Artyom Simitian</h1>
+        <p class="section__text__p2">Computer Science Student | CSUN</p>
+
+        <div class="btn-container">
+            <button
+                    class="btn btn-color-2"
+                    onclick="window.open('./assets/Artyom Simitian Resume 2026.pdf')"
+            >
+                Download CV
+            </button>
+
+            <button
+                    class="btn btn-color-1"
+                    onclick="location.href='./#contact'"
+            >
+                Contact Info
+            </button>
+        </div>
+
+        <div id="socials-container">
+            <img
+                    src="./assets/linkedin.png"
+                    alt="My LinkedIn Profile"
+                    class="icon"
+                    onclick="location.href='https://linkedin.com/in/artyom-simitian'"
+            />
+            <img
+                    src="./assets/CSUN_Seal.png"
+                    alt="CSUN"
+                    class="icon"
+                    onclick="location.href='https://www.csun.edu/engineering-computer-science/computer-science/programs/undergraduate-programs/bs-computer-science'"
+            />
+            <img
+                    src="./assets/github.png"
+                    alt="My GitHub Profile"
+                    class="icon"
+                    onclick="location.href='https://github.com/ArtyomSimitian'"
+            />
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="section-heading-glass">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+    </div>
+
+    <div class="section-container">
+        <div class="section__pic-container">
+            <img
+                    src="./assets/About_Me_Icon-removebg-preview.png"
+                    alt="About Me"
+                    class="about-pic"
+            />
+        </div>
+
+        <div class="about-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <img
+                            src="./assets/experience.png"
+                            alt="Experience Icon"
+                            class="icon"
+                    />
+                    <h3>Experience</h3>
+                    <p>1+ Year <br />Computer Analyst Assistant</p>
+                </div>
+
+                <div class="details-container">
+                    <img
+                            src="./assets/education.png"
+                            alt="Education Icon"
+                            class="icon"
+                    />
+                    <h3>Education</h3>
+                    <p>
+                        Junior Computer Science Student <br />
+                        California State University Northridge
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-container">
+                <p>
+                    Motivated Computer Science student with a strong foundation in programming,
+                    data analysis, and problem-solving. Skilled in applying technical knowledge
+                    to develop efficient solutions and committed to accuracy, innovation, and
+                    continuous learning in dynamic environments.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <img
+            src="./assets/arrow.png"
+            alt="Arrow icon"
+            class="icon arrow"
+            onclick="location.href='./#experience'"
+    />
+</section>
+
+<section id="experience">
+    <div class="section-heading-glass">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Experience</h1>
+    </div>
+
+    <div class="section-container">
+        <div class="section__pic-container">
+            <img
+                    src="./assets/Programming Languages Icon.png"
+                    alt="Programming Languages"
+                    class="about-pic"
+            />
+        </div>
+
+        <div class="experience-details-container">
+            <div class="details-container">
+                <h2 class="experience-sub-title">Skills</h2>
+
+                <div class="article-container">
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>C++</h3>
+                            <p>Experienced</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>Network &amp; Security</h3>
+                            <p>Experienced</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>Python</h3>
+                            <p>Intermediate</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>JavaScript</h3>
+                            <p>Educated</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>Computer Architecture</h3>
+                            <p>Educated</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>Data Structures &amp; Algorithms</h3>
+                            <p>Educated</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>Computer Hardware</h3>
+                            <p>Experienced</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>CSS</h3>
+                            <p>Experienced</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                        <div>
+                            <h3>HTML</h3>
+                            <p>Experienced</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img
+            src="./assets/arrow.png"
+            alt="Arrow icon"
+            class="icon arrow"
+            onclick="location.href='./#projects'"
+    />
+</section>
+
+<section id="projects">
+    <div class="section-heading-glass">
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Projects</h1>
+    </div>
+
+    <div class="experience-details-container">
+        <div class="about-containers">
+            <div class="details-container color-container">
+                <div class="article-container">
+                    <img
+                            src="./assets/Project1PonGameCover.png"
+                            alt="Pong Game Project"
+                            class="project-img"
+                    />
+                </div>
+
+                <h2 class="experience-sub-title project-title">Pong Game</h2>
+
+                <div class="btn-container">
+                    <button
+                            class="btn btn-color-2 project-btn"
+                            onclick="location.href='https://github.com/ArtyomSimitian/PongGame'"
+                    >
+                        Github
+                    </button>
+
+                    <button
+                            class="btn btn-color-2 project-btn"
+                            onclick="location.href='https://pongameartyomsimitian.netlify.app'"
+                    >
+                        Live Demo
+                    </button>
+                </div>
+            </div>
+
+            <div class="details-container color-container">
+                <div class="article-container">
+                    <img
+                            src="./assets/Project2SortingVisualizerCover.png"
+                            alt="Sorting Visualizer Project"
+                            class="project-img"
+                    />
+                </div>
+
+                <h2 class="experience-sub-title project-title">Sorting Visualizer</h2>
+
+                <div class="btn-container">
+                    <button
+                            class="btn btn-color-2 project-btn"
+                            onclick="location.href='https://github.com/ArtyomSimitian/sorting-visualizer'"
+                    >
+                        Github
+                    </button>
+
+                    <button
+                            class="btn btn-color-2 project-btn"
+                            onclick="location.href='https://sortingvisualizer.com/'"
+                    >
+                        Live Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img
+            src="./assets/arrow.png"
+            alt="Arrow icon"
+            class="icon arrow"
+            onclick="location.href='./#contact'"
+    />
+</section>
+
+<section id="contact">
+    <div class="section-heading-glass">
+        <p class="section__text__p1">Get In Touch!</p>
+        <h1 class="title">Contact Me</h1>
+    </div>
+
+    <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+            <img
+                    src="./assets/email.png"
+                    alt="Email icon"
+                    class="icon contact-icon email-icon"
+            />
+            <p>
+                <a href="mailto:simitianart@gmail.com">simitianart@gmail.com</a>
+            </p>
+        </div>
+
+        <div class="contact-info-container">
+            <img
+                    src="./assets/linkedin.png"
+                    alt="LinkedIn icon"
+                    class="icon contact-icon"
+            />
+            <p>
+                <a href="https://linkedin.com/in/artyom-simitian">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <nav>
+        <div class="nav-links-container">
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-          </div>
-        </nav>
-        <nav id="hamburger-nav">
-          <div class= "logo"> Artyom Simitian</div>
-          <div class= "hamburger-menu">
-            <div class= "hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class= "menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-            </div>
-          </div>
-        </nav>
-        <section id= "profile">
-            <div class= "section__pic-container">
-                <img src="./assets/Profile Picture Circle Original.png" alt = "Artyom Simtian
-                Profile Picture">
-
-            </div>
-            <div class= "section__text">
-                <p class="section__text__p1">Hello, I'm</p>
-                <h1 class="title">Artyom Simitian</h1>
-                <p class="section__text__p2">Computer Science Student | CSUN</p>
-                <div class="btn-container">
-
-                    <button 
-                    class = "btn btn-color-2"
-                    onclick="window.open('./assets/Artyom Simitian Resume 2026.pdf')"
-                >
-                Download CV
-            </button>
-                    <button class = "btn btn-color-1"
-                    onclick="location.href='./#contact'">   
-                Contact Info
-            </button>
-            </div>
-                <div id="socials-container">
-                <img 
-                src="./assets/linkedin.png" 
-                alt="My LinkedIn Profile"
-                class="icon"
-                onclick="location.href='https://linkedin.com/in/artyom-simitian'"
-                />
-                <img 
-                src="./assets/CSUN_Seal.png" 
-                alt="CSUN"
-                class="icon"
-                onclick="location.href='https://www.csun.edu/engineering-computer-science/computer-science/programs/undergraduate-programs/bs-computer-science'"
-                />
-                <img 
-                src="./assets/github.png" 
-                alt="My Github Profile"
-                class="icon"
-                onclick="location.href='https://github.com/ArtyomSimitian'"
-                />
-            </div>
-            </div>
-        </section>
-        <section id="about">
-            <p class="section__text__p1">Get To Know More</p>
-            <h1 class="title">About Me</h1>
-            <div class="section-container">
-                <div class="section__pic-container">
-                    <img src="./assets/About_Me_Icon-removebg-preview.png"Profile Picture"
-                    class="about-pic"/>
-                </div>
-                <div class="about-details-container">
-                    <div> <!--class = "aboutcontainers"-->
-                        <div class="details-container">
-                            <img src="./assets/experience.png"
-                            alt = "Experience Icon"
-                            class = "icon"
-                            />
-                            <h3>Experience</h3>
-                            <p>1+ Year <br>Computer Analyst Assistant</p>
-                        </div>
-                        <div class="details-container">
-                            <img src="./assets/education.png"
-                            alt = "Education Icon"
-                            class = "icon"
-                            />
-                            <h3>Education</h3>
-                            <p>Junior Computer Science Student <br>
-                                California State University Northridge</p>
-                        </div>
-                    </div>
-                    <div class="text-container">
-                        <p> <br> Motivated Computer Science student with a strong foundation in programming, 
-                            data analysis, and problem-solving. Skilled in applying technical knowledge to develop 
-                            efficient solutions and committed to accuracy, innovation, and continuous learning in 
-                            dynamic environments. 
-
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <img
-            src="./assets/arrow.png" 
-            alt ="Arrow icon" 
-            class = "icon arrow"
-            onclick = "location.href='./#experience'"
-            />
-        </section>
-        <section id="experience">
-            <p class="section__text__p1">Explore My</p>
-            <h1 class="title">Experience</h1>
-
-            <!--<div class="section-container"> -->
-           
-            <div class="section-container">
-                <div class="section__pic-container">
-                    <img src="./assets/Programming Languages Icon.png" 
-                    alt="Profile Picture"
-                    class="about-pic"/>
-                </div>
-                <div  class="experience-details-container"> <!--class = "aboutcontainers"-->
-                    
-                    <div class="details-container">
-                        <h2 class="experience-sub-title">
-                            Skills
-                        </h2>
-                        <div class="article-container">
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>C++</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Network & Security</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Python</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>JavaScript</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Computer Architecture</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Data Structures & Algorithms</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Computer Hardware</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>CSS</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>HTML</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <!-- </article>
-                        </div>
-                    </div>
-                    <div class="details-container">
-                        <h2 class="experience-sub-title">
-                            Computer Science Student
-                        </h2>
-                        <div class="article-container">
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>C++</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Python</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>JavaScript</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Computer Architecture</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Data Structures & Algorithms</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Computer Hardware</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article> -->
-                        </div> 
-                    </div> 
-                </div>
-            </div>
         </div>
-            <img
-             src="./assets/arrow.png" 
-             alt ="Arrow icon" 
-             class = "icon arrow"
-            onclick = "location.href = './#projects'"
-            />
-        </section>
-        <section id="projects">
-        <p class="section__text__p1">Broswe My Recent</p>
-        <h1 class= "title">Projects</h1>
-        <div class="expereience-details-container">
-            <div class="about-containers">
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img 
-                    src="./assets/Project1PonGameCover.png" 
-                    alt="Project 1"
-                    class="project-img"
-                    />
-                </div>
-                <h2 class="experience-sub-title project-title">Pong Game</h2>
-                <div class="btn-container">
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://github.com/ArtyomSimitian/PongGame'"
-                    >
-                        Github
-                    </button>
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://pongameartyomsimitian.netlify.app'"
-                    >
-                        Live Demo
-                    </button>
-                </div>
-            </div>
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img 
-                    src="./assets/Project2SortingVisualizerCover.png" 
-                    alt="Project 2"
-                    class="project-img"
-                    />
-                </div>
-                <h2 class="experience-sub-title project-title">Sorting Visualizer</h2>
-                <div class="btn-container">
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://github.com/ArtyomSimitian/sorting-visualizer'"
-                    >
-                        Github
-                    </button>
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://sortingvisualizer.com/'"
-                    >
-                        Live Demo
-                    </button>
-                </div>
-            </div>
-<!--                PROJECT TEMPLATE... -->
-<!--            <div class="details-container color-container">-->
-<!--                <div class="article-container">-->
-<!--                    <img -->
-<!--                    src="./assets/Temporary Project Icon.webp" -->
-<!--                    alt="Project 3"-->
-<!--                    class="project-img"-->
-<!--                    />-->
-<!--                </div>-->
-<!--                <h2 class="experience-sub-title project-title">Project Three</h2>-->
-<!--                <div class="btn-container">-->
-<!--                    <button -->
-<!--                    class="btn btn-color-2 project-btn"-->
-<!--                    onclick="location.-->
-<!--                    href='https://github.com/'"-->
-<!--                    >-->
-<!--                        Github-->
-<!--                    </button>-->
-<!--                    <button -->
-<!--                    class="btn btn-color-2 project-btn"-->
-<!--                    onclick="location.-->
-<!--                    href='https://github.com'"-->
-<!--                    >-->
-<!--                        Live Demo-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--            </div>-->
-        </div>
-        </div>
-        <img
-             src="./assets/arrow.png" 
-             alt ="Arrow icon" 
-             class = "icon arrow"
-            onclick = "location.href = './#contact'"
-            />
-        </section>
-        <section id="contact">
-            <p class="section__text__p1">Get In Touch!</p>
-            <h1 class="title">Contact Me</h1>
-            <div class="contact-info-upper-container">
-                <div class="contact-info-container">
-                    <img 
-                    src="./assets/email.png" 
-                    alt="Email icon" 
-                    class="icon contact-icon email-icon"
-                    />
-                    <p><a href="mailto:simitianart@gmail.com">
-                    simitianart@gmail.com &nbsp
-                    </a>
-                </p>
-                </div>
-                <div class="contact-info-container">
-                    <img 
-                    src="./assets/linkedin.png" 
-                    alt="Linkedin icon" 
-                    class="icon contact-icon"
-                    />
-                    <p><a href="https://linkedin.com/in/artyom-simitian">
-                    LinkedIn
-                    </a>
-                </p>
-                </div>
-            </div>
-        </section>
-        <footer>
-            <nav>
-                <div class="nav-links-container">
-                    <ul class="nav-links">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <p>Copyright &#169; 2026 Artyom Simitian. All Rights Reserved</p>
-        </footer>
-    <script src="script.js"></script>
+    </nav>
+    <p>Copyright &#169; 2026 Artyom Simitian. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
