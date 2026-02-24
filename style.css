@@ -2,6 +2,19 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap");
 
+:root {
+  --reveal-delay: 0ms;
+
+  /* Glass defaults (desktop) */
+  --glass-bg: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --glass-blur: 8px;
+  --glass-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  --glass-hover-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+
+  --accent: rgb(255, 117, 24);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +23,13 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -21,14 +41,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 /* Fixed wallpaper layer (works better than background-attachment: fixed on iPhone) */
 body::before {
   content: "";
@@ -36,21 +48,18 @@ body::before {
   inset: 0;
   z-index: -2;
   pointer-events: none;
-
   background: url("./assets/background_1.webp") center center / cover no-repeat;
 }
 
-/* Optional subtle overlay for readability */
+/* Subtle readability overlay */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-
   background: rgba(255, 255, 255, 0.05);
 }
-
 
 @media (max-width: 768px) {
   body::before {
@@ -63,11 +72,19 @@ p {
   color: black;
 }
 
-/* TRANSITION */
+/* LINKS + BUTTON TRANSITIONS */
 
-a,
-.btn {
-  transition: all 300ms ease;
+a {
+  color: black;
+  text-decoration: none;
+  transition: color 220ms ease, text-decoration-color 220ms ease;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.8rem;
+  text-decoration-color: var(--accent);
 }
 
 /* DESKTOP NAV */
@@ -89,18 +106,6 @@ nav {
   font-size: 1.5rem;
 }
 
-a {
-  color: black;
-  text-decoration: none;
-}
-
-a:hover {
-  color: rgb(255, 117, 24);
-  text-decoration: underline;
-  text-underline-offset: 0.8rem;
-  text-decoration-color: rgb(255, 117, 24);
-}
-
 .logo {
   font-size: 2rem;
 }
@@ -108,7 +113,6 @@ a:hover {
 .logo:hover {
   cursor: default;
 }
-
 
 .logo,
 .title,
@@ -140,26 +144,21 @@ a:hover {
   width: 100%;
   height: 2px;
   background-color: black;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .menu-links {
   position: absolute;
   top: 100%;
   right: 0;
-  background: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border-radius: 20px;
   width: fit-content;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3s ease-in-out;
   list-style: none;
   margin: 0;
   padding: 0;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
+  border-radius: 20px;
+  transition: max-height 0.3s ease-in-out;
 }
 
 .menu-links a {
@@ -169,7 +168,7 @@ a:hover {
   font-size: 1.5rem;
   color: black;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
 .menu-links li {
@@ -232,6 +231,7 @@ section {
   object-fit: contain;
   margin: 0 auto;
 }
+
 /* PROFILE SECTION */
 
 #profile {
@@ -296,7 +296,12 @@ section {
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
-  transition: all 300ms ease;
+  transition:
+          transform 140ms ease,
+          box-shadow 220ms ease,
+          background-color 220ms ease,
+          color 220ms ease,
+          border-color 220ms ease;
 }
 
 .btn-color-1,
@@ -358,22 +363,14 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-radius: 2rem;
-  border: 0.1rem solid rgba(255, 255, 255, 0.25);
   text-align: center;
 }
 
 .text-container p {
   padding: 1.5rem;
   flex: 1;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-radius: 2rem;
-  border: 0.1rem solid rgba(255, 255, 255, 0.25);
   text-align: center;
   font-weight: bold;
 }
@@ -424,10 +421,7 @@ section {
 }
 
 .color-container {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border-radius: 2rem;
 }
 
 .project-img {
@@ -460,10 +454,6 @@ section {
   display: flex;
   justify-content: center;
   border-radius: 2rem;
-  border: 0.1rem solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   margin: 2rem auto;
   padding: 0.5rem;
 }
@@ -478,6 +468,11 @@ section {
 
 .contact-info-container p {
   font-size: larger;
+  overflow-wrap: anywhere;
+}
+
+.contact-info-container a {
+  overflow-wrap: anywhere;
 }
 
 .contact-icon {
@@ -488,45 +483,43 @@ section {
   height: 2.5rem;
 }
 
+/* GLASS PANEL HELPERS */
 
-
-/* GLASS PANEL (blurred section/container background) */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-/* Smaller glass bar for section headings */
 .section-heading-glass {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
-
   width: fit-content;
   margin: 0 auto 1.5rem;
   padding: 0.75rem 1.25rem;
-
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
+/* SHARED GLASS SURFACES (single source of truth) */
+.menu-links,
+.details-container,
+.text-container p,
+.color-container,
+.contact-info-upper-container,
+.glass-panel,
+.section-heading-glass,
+footer {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--glass-shadow);
+}
 
 /* =========================
    ANIMATIONS + UI POLISH
    ========================= */
 
-/* Smooth hover polish for cards */
 .details-container,
 .color-container,
 .contact-info-upper-container,
@@ -539,12 +532,28 @@ section {
           background-color 220ms ease;
 }
 
-.details-container:hover,
-.color-container:hover,
-.contact-info-upper-container:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
-  border-color: rgba(255, 255, 255, 0.38);
+/* Hover-only devices (prevents weird touch hover behavior) */
+@media (hover: hover) and (pointer: fine) {
+  .details-container:hover,
+  .color-container:hover,
+  .contact-info-upper-container:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--glass-hover-shadow);
+    border-color: rgba(255, 255, 255, 0.34);
+  }
+
+  .color-container:hover .project-img {
+    transform: scale(1.03);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  #socials-container .icon:hover {
+    transform: translateY(-2px) scale(1.03);
+  }
 }
 
 /* Project image hover zoom */
@@ -553,25 +562,7 @@ section {
   transition: transform 280ms ease;
 }
 
-.color-container:hover .project-img {
-  transform: scale(1.03);
-}
-
 /* Button micro-interactions */
-.btn {
-  transition:
-          transform 140ms ease,
-          box-shadow 220ms ease,
-          background-color 220ms ease,
-          color 220ms ease,
-          border-color 220ms ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
 .btn:active {
   transform: translateY(0) scale(0.98);
 }
@@ -579,20 +570,18 @@ section {
 /* Nav active state (desktop + mobile menu links) */
 .nav-links a.active-link,
 .menu-links a.active-link {
-  color: rgb(255, 117, 24);
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 0.45rem;
-  text-decoration-color: rgb(255, 117, 24);
+  text-decoration-color: var(--accent);
 }
 
 /* Scroll reveal base */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition:
-          opacity 500ms ease,
-          transform 500ms ease;
-  transition-delay: var(--reveal-delay, 0ms);
+  transform: translateY(10px);
+  transition: opacity 280ms ease, transform 280ms ease;
+  transition-delay: var(--reveal-delay);
 }
 
 .reveal.is-visible {
@@ -600,32 +589,37 @@ section {
   transform: translateY(0);
 }
 
-/* Gentle arrow motion (your section arrows) */
+/* Gentle arrow motion */
 .arrow {
   animation: arrowFloat 1.9s ease-in-out infinite;
 }
 
 @keyframes arrowFloat {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(4px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-/* Optional: very subtle icon hover */
+/* Subtle icon hover baseline */
 #socials-container .icon {
   transition: transform 180ms ease;
 }
 
-#socials-container .icon:hover {
-  transform: translateY(-2px) scale(1.03);
-}
-
 /* Respect reduced-motion users */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   * {
     animation: none !important;
     transition: none !important;
-    scroll-behavior: auto !important;
   }
 
   .reveal {
@@ -633,46 +627,35 @@ section {
     transform: none !important;
   }
 }
-
 
 /* =========================
    MOBILE PERFORMANCE TUNING
    ========================= */
 @media screen and (max-width: 768px) {
-  /* Lower blur cost on mobile */
-  .details-container,
-  .text-container p,
-  .color-container,
-  .contact-info-upper-container,
-  .glass-panel,
-  .section-heading-glass,
-  .menu-links,
-  footer {
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    background: rgba(255, 255, 255, 0.22);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+  :root {
+    --glass-bg: rgba(255, 255, 255, 0.22);
+    --glass-blur: 6px;
+    --glass-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    --glass-hover-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
   }
 
-  /* Disable reveal animations on mobile (huge smoothness boost) */
+  /* Disable reveal animations on mobile for smooth scrolling */
   .reveal {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
-    will-change: auto !important;
   }
 
-  /* Stop arrow animation on mobile */
   .arrow {
     animation: none !important;
   }
 
-  /* Slightly cheaper wallpaper overlay on mobile */
   body::after {
     background: rgba(255, 255, 255, 0.03);
   }
 }
 
+/* Extra safety for touch devices */
 @media (hover: none) and (pointer: coarse) {
   .details-container:hover,
   .color-container:hover,
@@ -680,8 +663,8 @@ section {
   .section-heading-glass:hover,
   .glass-panel:hover {
     transform: none;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
-    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: var(--glass-shadow);
+    border-color: var(--glass-border);
   }
 
   .color-container:hover .project-img,
@@ -692,21 +675,35 @@ section {
   }
 }
 
+/* Render below-the-fold sections only when needed (where supported) */
+@supports (content-visibility: auto) {
+  #about,
+  #experience,
+  #projects,
+  #contact,
+  footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+  }
+}
 
-/* FOOTER SECTION */
+/* Paint containment helps reduce repaint cost */
+.details-container,
+.text-container p,
+.color-container,
+.contact-info-upper-container,
+.glass-panel,
+.section-heading-glass,
+footer {
+  contain: paint;
+}
+
+/* FOOTER */
 
 footer {
   height: 26vh;
   margin: 0 1rem;
-
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-
   padding: 16px 20px;
 }
 
