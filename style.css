@@ -374,6 +374,7 @@ section {
   border-radius: 2rem;
   border: 0.1rem solid rgba(255, 255, 255, 0.25);
   text-align: center;
+  font-weight: bold;
 }
 
 /* EXPERIENCE SECTION */
@@ -501,6 +502,7 @@ section {
 
 /* Smaller glass bar for section headings */
 .section-heading-glass {
+  transform: translateY(-2px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -517,6 +519,120 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   ANIMATIONS + UI POLISH
+   ========================= */
+
+/* Smooth hover polish for cards */
+.details-container,
+.color-container,
+.contact-info-upper-container,
+.section-heading-glass,
+.glass-panel {
+  transition:
+          transform 220ms ease,
+          box-shadow 220ms ease,
+          border-color 220ms ease,
+          background-color 220ms ease;
+}
+
+.details-container:hover,
+.color-container:hover,
+.contact-info-upper-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+/* Project image hover zoom */
+.article-container img,
+.project-img {
+  transition: transform 280ms ease;
+}
+
+.color-container:hover .project-img {
+  transform: scale(1.03);
+}
+
+/* Button micro-interactions */
+.btn {
+  transition:
+          transform 140ms ease,
+          box-shadow 220ms ease,
+          background-color 220ms ease,
+          color 220ms ease,
+          border-color 220ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Nav active state (desktop + mobile menu links) */
+.nav-links a.active-link,
+.menu-links a.active-link {
+  color: rgb(255, 117, 24);
+  text-decoration: underline;
+  text-underline-offset: 0.45rem;
+  text-decoration-color: rgb(255, 117, 24);
+}
+
+/* Scroll reveal base */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+          opacity 500ms ease,
+          transform 500ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gentle arrow motion (your section arrows) */
+.arrow {
+  animation: arrowFloat 1.9s ease-in-out infinite;
+}
+
+@keyframes arrowFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+  100% { transform: translateY(0); }
+}
+
+/* Optional: very subtle icon hover */
+#socials-container .icon {
+  transition: transform 180ms ease;
+}
+
+#socials-container .icon:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Respect reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* FOOTER SECTION */
