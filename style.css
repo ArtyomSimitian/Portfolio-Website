@@ -37,7 +37,7 @@ body::before {
   z-index: -2;
   pointer-events: none;
 
-  background: url("./assets/background_1.jpg") center center / cover no-repeat;
+  background: url("./assets/background_1.webp") center center / cover no-repeat;
 }
 
 /* Optional subtle overlay for readability */
@@ -55,6 +55,7 @@ body::after {
 @media (max-width: 768px) {
   body::before {
     background-position: center center;
+    background-image: url("./assets/background_1.webp");
   }
 }
 
@@ -502,7 +503,6 @@ section {
 
 /* Smaller glass bar for section headings */
 .section-heading-glass {
-  transform: translateY(-2px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -593,7 +593,6 @@ section {
           opacity 500ms ease,
           transform 500ms ease;
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
@@ -634,6 +633,65 @@ section {
     transform: none !important;
   }
 }
+
+
+/* =========================
+   MOBILE PERFORMANCE TUNING
+   ========================= */
+@media screen and (max-width: 768px) {
+  /* Lower blur cost on mobile */
+  .details-container,
+  .text-container p,
+  .color-container,
+  .contact-info-upper-container,
+  .glass-panel,
+  .section-heading-glass,
+  .menu-links,
+  footer {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+  }
+
+  /* Disable reveal animations on mobile (huge smoothness boost) */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  /* Stop arrow animation on mobile */
+  .arrow {
+    animation: none !important;
+  }
+
+  /* Slightly cheaper wallpaper overlay on mobile */
+  body::after {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .details-container:hover,
+  .color-container:hover,
+  .contact-info-upper-container:hover,
+  .section-heading-glass:hover,
+  .glass-panel:hover {
+    transform: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .color-container:hover .project-img,
+  #socials-container .icon:hover,
+  .btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 
 /* FOOTER SECTION */
 
