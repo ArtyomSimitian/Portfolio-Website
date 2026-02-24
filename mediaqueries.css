@@ -50,6 +50,7 @@
   .about-containers {
     margin-top: 0;
   }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -60,8 +61,22 @@
   }
 
   #profile {
-    height: 60vh;
-    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 70vh;
+  }
+
+  .section__text {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .section__text .title {
+    line-height: 1.1;
   }
 
   article {
@@ -79,6 +94,10 @@
   .btn-container {
     flex-wrap: wrap;
     align-items: center;
+  }
+
+  .contact-info-upper-container{
+    gap: 10px;
   }
 
   .contact-info-container {
