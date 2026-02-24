@@ -15,16 +15,45 @@ html {
 body {
   font-family: "Inter", sans-serif;
   background-color: rgb(250, 249, 248);
-  background-image: url("./assets/background_1.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  position: relative;
+  isolation: isolate;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fixed wallpaper layer (works better than background-attachment: fixed on iPhone) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background: url("./assets/background_1.jpg") center center / cover no-repeat;
+}
+
+/* Optional subtle overlay for readability */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background: rgba(255, 255, 255, 0.05);
+}
+
+
 @media (max-width: 768px) {
-  body {
+  body::before {
     background-position: center center;
   }
 }
