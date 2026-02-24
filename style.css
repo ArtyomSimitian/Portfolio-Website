@@ -1,6 +1,6 @@
 /* GENERAL */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap");*/
 
 :root {
   --reveal-delay: 0ms;
@@ -30,6 +30,19 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 body {
@@ -64,7 +77,6 @@ body::after {
 @media (max-width: 768px) {
   body::before {
     background-position: center center;
-    background-image: url("./assets/background_1.webp");
   }
 }
 
@@ -557,7 +569,6 @@ footer {
 }
 
 /* Project image hover zoom */
-.article-container img,
 .project-img {
   transition: transform 280ms ease;
 }

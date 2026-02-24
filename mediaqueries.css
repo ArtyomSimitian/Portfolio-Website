@@ -50,7 +50,6 @@
   .about-containers {
     margin-top: 0;
   }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -108,7 +107,7 @@
     align-items: center;
   }
 
-  .contact-info-upper-container{
+  .contact-info-upper-container {
     gap: 10px;
   }
 

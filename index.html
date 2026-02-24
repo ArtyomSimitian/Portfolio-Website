@@ -4,10 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="HE7vErKbV_JhMxJOqFtL7DJBVnJagsG5JhIIkmUOIis" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#faf9f8" />
 
     <title>Artyom Simitian | CS Student</title>
 
     <link rel="icon" type="image/png" href="./assets/AS_Favicon.png" />
+
+    <!-- Faster font loading than @import in CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap"
+    />
+
+    <!-- Preload background image (CSS backgrounds are discovered late) -->
+    <link rel="preload" as="image" href="./assets/background_1.webp" fetchpriority="high" />
+
+    <!-- Main styles -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
 </head>
@@ -46,6 +60,9 @@
         <img
                 src="./assets/Profile Picture Circle Original.png"
                 alt="Artyom Simitian Profile Picture"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
         />
     </div>
 
@@ -105,6 +122,8 @@
                     src="./assets/About_Me_Icon-removebg-preview.png"
                     alt="About Me"
                     class="about-pic"
+                    loading="lazy"
+                    decoding="async"
             />
         </div>
 
@@ -115,6 +134,8 @@
                             src="./assets/experience.png"
                             alt="Experience Icon"
                             class="icon"
+                            loading="lazy"
+                            decoding="async"
                     />
                     <h3>Experience</h3>
                     <p>1+ Year <br />Computer Analyst Assistant</p>
@@ -125,6 +146,8 @@
                             src="./assets/education.png"
                             alt="Education Icon"
                             class="icon"
+                            loading="lazy"
+                            decoding="async"
                     />
                     <h3>Education</h3>
                     <p>
@@ -150,6 +173,8 @@
             alt="Arrow icon"
             class="icon arrow"
             onclick="location.href='./#experience'"
+            loading="lazy"
+            decoding="async"
     />
 </section>
 
@@ -165,6 +190,8 @@
                     src="./assets/Programming Languages Icon.png"
                     alt="Programming Languages"
                     class="about-pic"
+                    loading="lazy"
+                    decoding="async"
             />
         </div>
 
@@ -254,6 +281,8 @@
             alt="Arrow icon"
             class="icon arrow"
             onclick="location.href='./#projects'"
+            loading="lazy"
+            decoding="async"
     />
 </section>
 
@@ -271,6 +300,8 @@
                             src="./assets/Project1PonGameCover.png"
                             alt="Pong Game Project"
                             class="project-img"
+                            loading="lazy"
+                            decoding="async"
                     />
                 </div>
 
@@ -328,6 +359,8 @@
             alt="Arrow icon"
             class="icon arrow"
             onclick="location.href='./#contact'"
+            loading="lazy"
+            decoding="async"
     />
 </section>
 
@@ -343,6 +376,8 @@
                     src="./assets/email.png"
                     alt="Email icon"
                     class="icon contact-icon email-icon"
+                    loading="lazy"
+                    decoding="async"
             />
             <p><a href="mailto:simitianart@gmail.com">simitianart@gmail.com</a></p>
         </div>
@@ -352,6 +387,8 @@
                     src="./assets/linkedin.png"
                     alt="LinkedIn icon"
                     class="icon contact-icon"
+                    loading="lazy"
+                    decoding="async"
             />
             <p>
                 <a href="https://linkedin.com/in/artyom-simitian">LinkedIn</a>
@@ -374,6 +411,6 @@
     <p>Copyright &#169; 2026 Artyom Simitian. All Rights Reserved.</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>
