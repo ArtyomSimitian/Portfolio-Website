@@ -226,6 +226,7 @@ section {
 
 .section__text__p1 {
   text-align: center;
+  font-weight: bold;
 }
 
 .section__text__p2 {
@@ -353,7 +354,7 @@ section {
 }
 
 .experience-sub-title {
-  color: rgb(85, 85, 85);
+  color: black;
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 2rem;
