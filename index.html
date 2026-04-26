@@ -1,433 +1,386 @@
-<link rel="icon" type="image/x-icon" href="./assets/checkmark.png">
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mediaqueries.css">
-</head>
-<body>
-    <nav id= "desktop-nav">
-        <div class = "logo"> Artyom Simitian</div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Artyom Simitian is a CSUN Computer Science student focused on software engineering, backend systems, and building practical products."
+    />
+    <meta
+      name="keywords"
+      content="Artyom Simitian, software engineer, CSUN, computer science, backend, portfolio"
+    />
+    <meta name="author" content="Artyom Simitian" />
+    <meta property="og:title" content="Artyom Simitian | Software Engineering Portfolio" />
+    <meta
+      property="og:description"
+      content="Modern portfolio showcasing projects, technical skills, and experience in software development."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://artyomsimitian.com" />
+    <link rel="icon" type="image/x-icon" href="./assets/checkmark.png" />
+    <title>Artyom Simitian | Software Engineering Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav container" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Go to homepage">Artyom Simitian</a>
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Open navigation menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience-education">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav id="mobile-menu" class="mobile-nav container" aria-label="Mobile navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience-education">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="home" class="hero section container reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">Computer Science Student at CSUN</p>
+          <h1>Building reliable software that solves real user problems.</h1>
+          <p class="hero-lead">
+            I am Artyom Simitian, a software-focused CS student who enjoys backend development,
+            systems thinking, and shipping practical projects from idea to deployment.
+          </p>
+          <div class="cta-group">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a
+              class="btn btn-secondary"
+              href="./assets/Artyom Simitian Resume 2026 CSUN.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Download Resume</a
+            >
+            <a class="btn btn-ghost" href="#contact">Contact Me</a>
+          </div>
+          <div class="hero-links" aria-label="Professional links">
+            <a href="https://github.com/ArtyomSimitian" target="_blank" rel="noopener noreferrer"
+              >GitHub</a
+            >
+            <a
+              href="https://linkedin.com/in/artyom-simitian"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >
+            <a
+              href="https://www.csun.edu/engineering-computer-science/computer-science/programs/undergraduate-programs/bs-computer-science"
+              target="_blank"
+              rel="noopener noreferrer"
+              >CSUN Program</a
+            >
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img
+            src="./assets/Profile Picture Circle.png"
+            alt=""
+            width="360"
+            height="360"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <div class="terminal-card">
+            <p><span class="prompt">$</span> whoami</p>
+            <p>Artyom Simitian - Future Software Engineer</p>
+            <p><span class="prompt">$</span> focus --current</p>
+            <p>Backend development, algorithms, and production-ready projects</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section container reveal">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>Technical mindset with practical execution</h2>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <h3>What I bring</h3>
+            <p>
+              I focus on building clear, maintainable software with strong fundamentals in data
+              structures, algorithms, and system behavior. I enjoy breaking down complex problems
+              into steps and delivering solutions that are performant and dependable.
+            </p>
+          </article>
+          <article class="card">
+            <h3>How I work</h3>
+            <p>
+              My development approach is structured and iterative: design first, implement cleanly,
+              test edge cases, and refine for usability. I value readable code, measurable
+              improvements, and shipping projects that are useful beyond the classroom.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Current focus</h3>
+            <p>
+              I am actively pursuing software engineering and IT internships where I can contribute
+              to backend features, automation workflows, and full project lifecycles while
+              continuing to grow as an engineer.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="section container reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Technical Skills</p>
+          <h2>Organized by what I use to build and ship</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="card skills-card">
+            <h3>Languages</h3>
+            <ul class="pill-list">
+              <li>C++</li>
+              <li>Python</li>
+              <li>JavaScript</li>
+              <li>SQL</li>
             </ul>
-          </div>
-        </nav>
-        <nav id="hamburger-nav">
-          <div class= "logo"> Artyom Simitian</div>
-          <div class= "hamburger-menu">
-            <div class= "hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class= "menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-            </div>
-          </div>
-        </nav>
-        <section id= "profile">
-            <div class= "section__pic-container">
-                <img src="./assets/Profile Picture Circle.png" alt = "Artyom Simtian
-                Profile Picture">
+          </article>
+          <article class="card skills-card">
+            <h3>Backend & Core CS</h3>
+            <ul class="pill-list">
+              <li>Data Structures & Algorithms</li>
+              <li>Computer Architecture</li>
+              <li>Networking & Security</li>
+              <li>API Design Fundamentals</li>
+            </ul>
+          </article>
+          <article class="card skills-card">
+            <h3>Tools & Workflow</h3>
+            <ul class="pill-list">
+              <li>Git & GitHub</li>
+              <li>Debugging & Testing</li>
+              <li>Responsive UI Development</li>
+              <li>Problem Decomposition</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
-            </div>
-            <div class= "section__text">
-                <p class="section__text__p1">Hello, I'm</p>
-                <h1 class="title">Artyom Simitian</h1>
-                <p class="section__text__p2">Computer Science Student | CSUN</p>
-                <div class="btn-container">
-
-                    <button 
-                    class = "btn btn-color-2"
-                    onclick="window.open('./assets/Artyom Simitian Resume 2026 CSUN.pdf')"
+      <section id="projects" class="section container reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Featured Projects</p>
+          <h2>Projects that highlight engineering decisions</h2>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <img
+              src="./assets/Project1PonGameCover.png"
+              alt="Pong Game project preview"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="project-content">
+              <h3>Pong Game</h3>
+              <p>
+                A browser-based Pong implementation with smooth controls and polished gameplay.
+                Built to practice interactive state management and game loop logic.
+              </p>
+              <p class="project-meta"><strong>Tech:</strong> JavaScript, HTML, CSS</p>
+              <p class="project-meta">
+                <strong>Problem Solved:</strong> Demonstrates real-time rendering and responsive
+                gameplay interactions in the browser.
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ArtyomSimitian/PongGame"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
                 >
-                Download CV
-            </button>
-                    <button class = "btn btn-color-1"
-                    onclick="location.href='./#contact'">   
-                Contact Info
-            </button>
+                <a
+                  href="https://pongameartyomsimitian.netlify.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Live Demo</a
+                >
+              </div>
             </div>
-                <div id="socials-container">
-                <img 
-                src="./assets/linkedin.png" 
-                alt="My LinkedIn Profile"
-                class="icon"
-                onclick="location.href='https://linkedin.com/in/artyom-simitian'"
-                />
-                <img 
-                src="./assets/CSUN_Seal.png" 
-                alt="CSUN"
-                class="icon"
-                onclick="location.href='https://www.csun.edu/engineering-computer-science/computer-science/programs/undergraduate-programs/bs-computer-science'"
-                />
-                <img 
-                src="./assets/github.png" 
-                alt="My Github Profile"
-                class="icon"
-                onclick="location.href='https://github.com/ArtyomSimitian'"
-                />
-            </div>
-            </div>
-        </section>
-        <section id="about">
-            <p class="section__text__p1">Get To Know More</p>
-            <h1 class="title">About Me</h1>
-            <div class="section-container">
-                <div class="section__pic-container">
-                    <img src="./assets/About Me Icon.jpg" alt="Profile Picture"
-                    class="about-pic"/>
-                </div>
-                <div class="about-details-container">
-                    <div> <!--class = "aboutcontainers"-->
-                        <div class="details-container">
-                            <img src="./assets/experience.png"
-                            alt = "Experience Icon"
-                            class = "icon"
-                            />
-                            <h3>Experience</h3>
-                            <p>1+ Year <br>Computer Analyst Assistant</p>
-                        </div>
-                        <div class="details-container">
-                            <img src="./assets/education.png"
-                            alt = "Education Icon"
-                            class = "icon"
-                            />
-                            <h3>Education</h3>
-                            <p>Junior Computer Science Student <br>
-                                California State University Northridge</p>
-                        </div>
-                    </div>
-                    <div class="text-container">
-                        <p> <br> Motivated Computer Science student with a strong foundation in programming, 
-                            data analysis, and problem-solving. Skilled in applying technical knowledge to develop 
-                            efficient solutions and committed to accuracy, innovation, and continuous learning in 
-                            dynamic environments. 
+          </article>
 
-                        </p>
-                    </div>
-                </div>
-            </div>
+          <article class="project-card">
             <img
-            src="./assets/arrow.png" 
-            alt ="Arrow icon" 
-            class = "icon arrow"
-            onclick = "location.href='./#experience'"
+              src="./assets/Project2SortingVisualizerCover.png"
+              alt="Sorting Visualizer project preview"
+              loading="lazy"
+              decoding="async"
             />
-        </section>
-        <section id="experience">
-            <p class="section__text__p1">Explore My</p>
-            <h1 class="title">Experience</h1>
+            <div class="project-content">
+              <h3>Sorting Visualizer</h3>
+              <p>
+                Interactive visualizer for common sorting algorithms that helps users understand
+                algorithm behavior through animation and speed controls.
+              </p>
+              <p class="project-meta"><strong>Tech:</strong> JavaScript, HTML, CSS</p>
+              <p class="project-meta">
+                <strong>Problem Solved:</strong> Turns abstract algorithm concepts into intuitive,
+                step-by-step visual learning.
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ArtyomSimitian/sorting-visualizer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+                <a href="https://sortingvisualizer.com/" target="_blank" rel="noopener noreferrer"
+                  >Live Demo</a
+                >
+              </div>
+            </div>
+          </article>
 
-            <!--<div class="section-container"> -->
-           
-            <div class="section-container">
-                <div class="section__pic-container">
-                    <img src="./assets/Programming Languages Icon.png" 
-                    alt="Profile Picture"
-                    class="about-pic"/>
-                </div>
-                <div  class="experience-details-container"> <!--class = "aboutcontainers"-->
-                    
-                    <div class="details-container">
-                        <h2 class="experience-sub-title">
-                            Skills
-                        </h2>
-                        <div class="article-container">
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>C++</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Network & Security</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Python</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>JavaScript</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Computer Architecture</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Data Structures & Algorithms</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Computer Hardware</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            <!-- </article>
-                        </div>
-                    </div>
-                    <div class="details-container">
-                        <h2 class="experience-sub-title">
-                            Computer Science Student
-                        </h2>
-                        <div class="article-container">
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>C++</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Python</h3>
-                                    <p>Intermediate</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>JavaScript</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Computer Architecture</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Data Structures & Algorithms</h3>
-                                    <p>Educated</p>
-                                </div>
-                            </article>
-                            <article>
-                                <img src="./assets/checkmark.png" alt="Experience
-                                icon"
-                                class="icon"
-                                />
-                                <div>
-                                    <h3>Computer Hardware</h3>
-                                    <p>Experienced</p>
-                                </div>
-                            </article> -->
-                        </div> 
-                    </div> 
-                </div>
-            </div>
-        </div>
+          <article class="project-card project-card--placeholder">
             <img
-             src="./assets/arrow.png" 
-             alt ="Arrow icon" 
-             class = "icon arrow"
-            onclick = "location.href = './#projects'"
+              src="./assets/Temporary Project Icon.webp"
+              alt="Future project placeholder preview"
+              loading="lazy"
+              decoding="async"
             />
-        </section>
-        <section id="projects">
-        <p class="section__text__p1">Broswe My Recent</p>
-        <h1 class= "title">Projects</h1>
-        <div class="expereience-details-container">
-            <div class="about-containers">
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img 
-                    src="./assets/Project1PonGameCover.png" 
-                    alt="Project 1"
-                    class="project-img"
-                    />
-                </div>
-                <h2 class="experience-sub-title project-title">Pong Game</h2>
-                <div class="btn-container">
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://github.com/ArtyomSimitian/PongGame'"
-                    >
-                        Github
-                    </button>
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://pongameartyomsimitian.netlify.app'"
-                    >
-                        Live Demo
-                    </button>
-                </div>
+            <div class="project-content">
+              <h3>Next Build: URL Shortener API</h3>
+              <p>
+                Planned backend system with analytics, persistent storage, and secure link
+                generation. Designed as a scalable service project for internship interviews.
+              </p>
+              <p class="project-meta">
+                <strong>Tech (planned):</strong> Node.js, Express, Database, Docker
+              </p>
+              <p class="project-meta">
+                <strong>Problem Solved:</strong> Provides short, trackable links for efficient
+                sharing and simple campaign analytics.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/ArtyomSimitian" target="_blank" rel="noopener noreferrer"
+                  >GitHub Profile</a
+                >
+                <span aria-hidden="true">Live Demo - Coming Soon</span>
+              </div>
             </div>
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img 
-                    src="./assets/Project2SortingVisualizerCover.png" 
-                    alt="Project 2"
-                    class="project-img"
-                    />
-                </div>
-                <h2 class="experience-sub-title project-title">Sorting Visualizer</h2>
-                <div class="btn-container">
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://github.com/ArtyomSimitian/sorting-visualizer'"
-                    >
-                        Github
-                    </button>
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://sortingvisualizer.com/'"
-                    >
-                        Live Demo
-                    </button>
-                </div>
-            </div>
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img 
-                    src="./assets/Temporary Project Icon.webp" 
-                    alt="Project 3"
-                    class="project-img"
-                    />
-                </div>
-                <h2 class="experience-sub-title project-title">Project Three</h2>
-                <div class="btn-container">
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://github.com/'"
-                    >
-                        Github
-                    </button>
-                    <button 
-                    class="btn btn-color-2 project-btn"
-                    onclick="location.
-                    href='https://github.com'"
-                    >
-                        Live Demo
-                    </button>
-                </div>
-            </div>
-        </div>
-        </div>
-        <img
-             src="./assets/arrow.png" 
-             alt ="Arrow icon" 
-             class = "icon arrow"
-            onclick = "location.href = './#contact'"
+          </article>
+
+          <article class="project-card project-card--placeholder">
+            <img
+              src="./assets/Temporary Project Icon.webp"
+              alt="Future mobile app placeholder preview"
+              loading="lazy"
+              decoding="async"
             />
-        </section>
-        <section id="contact">
-            <p class="section__text__p1">Get In Touch!</p>
-            <h1 class="title">Contact Me</h1>
-            <div class="contact-info-upper-container">
-                <div class="contact-info-container">
-                    <img 
-                    src="./assets/email.png" 
-                    alt="Email icon" 
-                    class="icon contact-icon email-icon"
-                    />
-                    <p><a href="mailto:simitianart@gmail.com">
-                    simitianart@gmail.com &nbsp
-                    </a>
-                </p>
-                </div>
-                <div class="contact-info-container">
-                    <img 
-                    src="./assets/linkedin.png" 
-                    alt="Linkedin icon" 
-                    class="icon contact-icon"
-                    />
-                    <p><a href="https://linkedin.com/in/artyom-simitian">
-                    LinkedIn
-                    </a>
-                </p>
-                </div>
+            <div class="project-content">
+              <h3>Next Build: Task Manager App</h3>
+              <p>
+                Planned Flutter and Firebase mobile app for managing tasks with authentication,
+                cloud sync, and intuitive workflows.
+              </p>
+              <p class="project-meta">
+                <strong>Tech (planned):</strong> Flutter, Firebase, Firestore
+              </p>
+              <p class="project-meta">
+                <strong>Problem Solved:</strong> Helps users track priorities across devices with
+                real-time updates.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/ArtyomSimitian" target="_blank" rel="noopener noreferrer"
+                  >GitHub Profile</a
+                >
+                <span aria-hidden="true">Live Demo - Coming Soon</span>
+              </div>
             </div>
-        </section>
-        <footer>
-            <nav>
-                <div class="nav-links-container">
-                    <ul class="nav-links">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <p>Copyright &#169; 2026 Artyom Simitian. All Rights Reserved</p>
-        </footer>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience-education" class="section container reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Experience & Education</p>
+          <h2>Professional and academic foundation</h2>
+        </div>
+        <div class="timeline">
+          <article class="card timeline-item">
+            <h3>Computer Analyst Assistant</h3>
+            <p class="timeline-meta">1+ year experience</p>
+            <p>
+              Supported technical operations with a focus on troubleshooting, system reliability,
+              and clear communication. Strengthened practical IT and analytical problem-solving
+              skills in a fast-paced environment.
+            </p>
+          </article>
+          <article class="card timeline-item">
+            <h3>California State University, Northridge</h3>
+            <p class="timeline-meta">B.S. Computer Science - Junior</p>
+            <p>
+              Coursework and projects centered around software engineering, algorithms, computer
+              architecture, and modern development practices.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section container reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Open to internships and technical opportunities</h2>
+        </div>
+        <div class="contact-card">
+          <p>
+            I am currently looking for Software Engineering and IT internship opportunities where I
+            can contribute, learn quickly, and ship meaningful work.
+          </p>
+          <ul class="contact-list">
+            <li>
+              <strong>Email:</strong> <a href="mailto:simitianart@gmail.com">simitianart@gmail.com</a>
+            </li>
+            <li>
+              <strong>LinkedIn:</strong>
+              <a href="https://linkedin.com/in/artyom-simitian" target="_blank" rel="noopener noreferrer"
+                >linkedin.com/in/artyom-simitian</a
+              >
+            </li>
+            <li>
+              <strong>GitHub:</strong>
+              <a href="https://github.com/ArtyomSimitian" target="_blank" rel="noopener noreferrer"
+                >github.com/ArtyomSimitian</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>&copy; 2026 Artyom Simitian. All rights reserved.</p>
+        <a href="#home">Back to top</a>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
