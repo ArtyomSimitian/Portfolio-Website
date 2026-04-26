@@ -64,15 +64,22 @@
         <div class="hero-copy">
           <p class="eyebrow">Computer Science Student at CSUN</p>
           <h1>Building reliable software that solves real user problems.</h1>
+          <p class="hero-rotator">
+            <span class="rotator-label">Role:</span>
+            <span id="rotating-role" aria-live="polite">Software Engineering Student</span>
+          </p>
           <p class="hero-lead">
             I am Artyom Simitian, a software-focused CS student who enjoys backend development,
             systems thinking, and shipping practical projects from idea to deployment.
+          </p>
+          <p class="focus-badge">
+            Currently focused on backend projects, algorithms, and full-stack applications.
           </p>
           <div class="cta-group">
             <a class="btn btn-primary" href="#projects">View Projects</a>
             <a
               class="btn btn-secondary"
-              href="./assets/Artyom Simitian Resume 2026 CSUN.pdf"
+              href="./assets/Artyom Simitian Resume 2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
               >Download Resume</a
@@ -153,9 +160,9 @@
           <p class="eyebrow">Technical Skills</p>
           <h2>Organized by what I use to build and ship</h2>
         </div>
-        <div class="skills-grid">
+        <div class="skills-grid skills-grid--five">
           <article class="card skills-card">
-            <h3>Languages</h3>
+            <h3><span aria-hidden="true">{"}"</span> Languages</h3>
             <ul class="pill-list">
               <li>C++</li>
               <li>Python</li>
@@ -164,21 +171,39 @@
             </ul>
           </article>
           <article class="card skills-card">
-            <h3>Backend & Core CS</h3>
+            <h3><span aria-hidden="true">&lt;/&gt;</span> Frontend</h3>
             <ul class="pill-list">
-              <li>Data Structures & Algorithms</li>
-              <li>Computer Architecture</li>
-              <li>Networking & Security</li>
-              <li>API Design Fundamentals</li>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript</li>
+              <li>Responsive Design</li>
             </ul>
           </article>
           <article class="card skills-card">
-            <h3>Tools & Workflow</h3>
+            <h3><span aria-hidden="true">()</span> Backend</h3>
+            <ul class="pill-list">
+              <li>API Design Fundamentals</li>
+              <li>Database Fundamentals</li>
+              <li>Networking & Security</li>
+              <li>Server-side Logic</li>
+            </ul>
+          </article>
+          <article class="card skills-card">
+            <h3><span aria-hidden="true">#</span> Tools</h3>
             <ul class="pill-list">
               <li>Git & GitHub</li>
-              <li>Debugging & Testing</li>
-              <li>Responsive UI Development</li>
+              <li>Firebase / Firestore</li>
+              <li>AWS</li>
+              <li>Browser DevTools</li>
+            </ul>
+          </article>
+          <article class="card skills-card">
+            <h3><span aria-hidden="true">[]</span> Concepts</h3>
+            <ul class="pill-list">
+              <li>Data Structures & Algorithms</li>
+              <li>Computer Architecture</li>
               <li>Problem Decomposition</li>
+              <li>Software Engineering Practices</li>
             </ul>
           </article>
         </div>
@@ -189,6 +214,49 @@
           <p class="eyebrow">Featured Projects</p>
           <h2>Projects that highlight engineering decisions</h2>
         </div>
+
+        <article class="featured-project">
+          <div class="featured-image-wrap">
+            <img
+              src="./assets/Project2SortingVisualizerCover.png?v=2026"
+              alt="Sorting Visualizer featured project preview"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="status-badge status-live">Featured</span>
+          </div>
+          <div class="featured-content">
+            <p class="eyebrow">Featured Case Study</p>
+            <h3>Sorting Visualizer</h3>
+            <p>
+              An interactive web app that turns abstract sorting algorithms into clear visual
+              steps. Built to improve algorithm intuition and explain time/behavior tradeoffs in a
+              practical way.
+            </p>
+            <p class="project-meta">
+              <strong>Problem Solved:</strong> Makes algorithm learning faster by showing exactly
+              how values move over time.
+            </p>
+            <p class="project-meta"><strong>Tech Stack:</strong> JavaScript, HTML, CSS</p>
+            <ul class="feature-list">
+              <li>Visual step-by-step algorithm animation</li>
+              <li>Speed controls and interaction tuning</li>
+              <li>Clear UI for educational use</li>
+            </ul>
+            <div class="project-links">
+              <a
+                href="https://github.com/ArtyomSimitian/sorting-visualizer"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+              <a href="https://sortingvisualizer.com/" target="_blank" rel="noopener noreferrer"
+                >Live Demo</a
+              >
+            </div>
+          </div>
+        </article>
+
         <div class="projects-grid">
           <article class="project-card">
             <img
@@ -198,15 +266,26 @@
               decoding="async"
             />
             <div class="project-content">
-              <h3>Pong Game</h3>
+              <div class="project-top">
+                <h3>Pong Game</h3>
+                <span class="status-badge status-live">Live</span>
+              </div>
               <p>
                 A browser-based Pong implementation with smooth controls and polished gameplay.
                 Built to practice interactive state management and game loop logic.
               </p>
-              <p class="project-meta"><strong>Tech:</strong> JavaScript, HTML, CSS</p>
+              <ul class="case-study-tags">
+                <li>JavaScript</li>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
               <p class="project-meta">
                 <strong>Problem Solved:</strong> Demonstrates real-time rendering and responsive
                 gameplay interactions in the browser.
+              </p>
+              <p class="project-meta">
+                <strong>Technical Focus:</strong> Game loop performance, event handling, collision
+                logic.
               </p>
               <div class="project-links">
                 <a
@@ -227,21 +306,32 @@
 
           <article class="project-card">
             <img
-              src="./assets/Project2SortingVisualizerCover.png"
+              src="./assets/Project2SortingVisualizerCover.png?v=2026"
               alt="Sorting Visualizer project preview"
               loading="lazy"
               decoding="async"
             />
             <div class="project-content">
-              <h3>Sorting Visualizer</h3>
+              <div class="project-top">
+                <h3>Sorting Visualizer</h3>
+                <span class="status-badge status-live">Live</span>
+              </div>
               <p>
                 Interactive visualizer for common sorting algorithms that helps users understand
                 algorithm behavior through animation and speed controls.
               </p>
-              <p class="project-meta"><strong>Tech:</strong> JavaScript, HTML, CSS</p>
+              <ul class="case-study-tags">
+                <li>JavaScript</li>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
               <p class="project-meta">
                 <strong>Problem Solved:</strong> Turns abstract algorithm concepts into intuitive,
                 step-by-step visual learning.
+              </p>
+              <p class="project-meta">
+                <strong>What I Learned:</strong> How UI clarity and animation timing improve
+                algorithm understanding.
               </p>
               <div class="project-links">
                 <a
@@ -265,17 +355,27 @@
               decoding="async"
             />
             <div class="project-content">
-              <h3>Next Build: URL Shortener API</h3>
+              <div class="project-top">
+                <h3>Next Build: URL Shortener API</h3>
+                <span class="status-badge status-progress">In Progress</span>
+              </div>
               <p>
                 Planned backend system with analytics, persistent storage, and secure link
                 generation. Designed as a scalable service project for internship interviews.
               </p>
-              <p class="project-meta">
-                <strong>Tech (planned):</strong> Node.js, Express, Database, Docker
-              </p>
+              <ul class="case-study-tags">
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>Database</li>
+                <li>Docker</li>
+              </ul>
               <p class="project-meta">
                 <strong>Problem Solved:</strong> Provides short, trackable links for efficient
                 sharing and simple campaign analytics.
+              </p>
+              <p class="project-meta">
+                <strong>Technical Focus:</strong> API structure, persistence, and backend
+                reliability patterns.
               </p>
               <div class="project-links">
                 <a href="https://github.com/ArtyomSimitian" target="_blank" rel="noopener noreferrer"
@@ -294,17 +394,26 @@
               decoding="async"
             />
             <div class="project-content">
-              <h3>Next Build: Task Manager App</h3>
+              <div class="project-top">
+                <h3>Next Build: Task Manager App</h3>
+                <span class="status-badge status-planned">Planned</span>
+              </div>
               <p>
                 Planned Flutter and Firebase mobile app for managing tasks with authentication,
                 cloud sync, and intuitive workflows.
               </p>
-              <p class="project-meta">
-                <strong>Tech (planned):</strong> Flutter, Firebase, Firestore
-              </p>
+              <ul class="case-study-tags">
+                <li>Flutter</li>
+                <li>Firebase</li>
+                <li>Firestore</li>
+              </ul>
               <p class="project-meta">
                 <strong>Problem Solved:</strong> Helps users track priorities across devices with
                 real-time updates.
+              </p>
+              <p class="project-meta">
+                <strong>What I Learned:</strong> Product planning for cross-platform UX and backend
+                sync.
               </p>
               <div class="project-links">
                 <a href="https://github.com/ArtyomSimitian" target="_blank" rel="noopener noreferrer"
@@ -341,6 +450,47 @@
             </p>
           </article>
         </div>
+        <div class="current-focus-grid">
+          <article class="card">
+            <h3>Current Focus Areas</h3>
+            <ul class="focus-list">
+              <li>Data structures and algorithms</li>
+              <li>Backend development</li>
+              <li>Software engineering practices</li>
+              <li>Full-stack project implementation</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="how-i-work" class="section container reveal">
+        <div class="section-heading">
+          <p class="eyebrow">How I Work</p>
+          <h2>What I care about in every build</h2>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <h3>Clean, maintainable code</h3>
+            <p>
+              I prioritize readable structure, naming clarity, and architecture decisions that make
+              future updates easier.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Learning by building</h3>
+            <p>
+              I learn fastest by shipping real projects, testing edge cases, and improving through
+              iteration.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Solving real user problems</h3>
+            <p>
+              I focus on practical outcomes, not just features, so each project provides clear
+              value to users.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section id="contact" class="section container reveal">
@@ -350,9 +500,33 @@
         </div>
         <div class="contact-card">
           <p>
-            I am currently looking for Software Engineering and IT internship opportunities where I
-            can contribute, learn quickly, and ship meaningful work.
+            I am open to software engineering internships, IT roles, and project-based
+            opportunities where I can contribute quickly and grow with a strong team.
           </p>
+          <div class="contact-cta-group">
+            <a class="btn btn-primary" href="mailto:artyomsimitian@gmail.com">Email Me</a>
+            <a
+              class="btn btn-secondary"
+              href="./assets/Artyom Simitian Resume 2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Resume</a
+            >
+            <a
+              class="btn btn-ghost"
+              href="https://linkedin.com/in/artyom-simitian"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/ArtyomSimitian"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </div>
           <ul class="contact-list">
             <li>
               <strong>Email:</strong> <a href="mailto:artyomsimitian@gmail.com">artyomsimitian@gmail.com</a>

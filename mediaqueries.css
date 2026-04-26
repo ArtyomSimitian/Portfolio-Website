@@ -15,9 +15,20 @@
 
   .about-grid,
   .skills-grid,
+  .skills-grid--five,
   .projects-grid,
-  .timeline {
+  .timeline,
+  .featured-project {
     grid-template-columns: 1fr;
+  }
+
+  .featured-image-wrap img {
+    min-height: 220px;
+  }
+
+  .timeline::before,
+  .timeline-item::before {
+    display: none;
   }
 }
 
@@ -44,6 +55,10 @@
     text-align: center;
     padding: 1rem 0;
   }
+
+  .contact-cta-group .btn {
+    flex: 1 1 160px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -57,6 +72,19 @@
 
   .hero-lead {
     font-size: 0.95rem;
+  }
+
+  #rotating-role {
+    min-width: 0;
+  }
+
+  .focus-badge {
+    width: 100%;
+    border-radius: 0.9rem;
+  }
+
+  .project-top {
+    flex-wrap: wrap;
   }
 
   .btn {

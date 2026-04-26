@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
 }
 
 body {
@@ -27,8 +28,29 @@ body {
   font-family: "Inter", sans-serif;
   background: radial-gradient(circle at 10% 10%, #232323 0%, var(--bg) 40%),
     linear-gradient(160deg, #050505 0%, #090909 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--text);
   line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.08), transparent 32%),
+    radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.06), transparent 36%),
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: auto, auto, 36px 36px, 36px 36px;
+  background-position: center, center, 0 0, 0 0;
+  animation: moveGrid 22s linear infinite;
+  opacity: 0.72;
 }
 
 a {
@@ -42,7 +64,7 @@ a:hover {
 }
 
 .container {
-  width: min(1120px, 92vw);
+  width: min(1320px, 94vw);
   margin: 0 auto;
 }
 
@@ -96,6 +118,14 @@ a:hover {
 .nav-links a {
   color: var(--text);
   font-weight: 500;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-links a.is-active,
+.mobile-nav a.is-active {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 .menu-toggle {
@@ -148,6 +178,7 @@ a:hover {
   display: block;
   color: var(--text);
   padding: 0.75rem 0.8rem;
+  border-radius: 0.5rem;
 }
 
 .mobile-nav.open {
@@ -155,7 +186,7 @@ a:hover {
 }
 
 .section {
-  padding: 5.5rem 0 1.4rem;
+  padding: 5rem 0 1.2rem;
 }
 
 .section-heading {
@@ -183,6 +214,18 @@ a:hover {
   align-items: center;
   gap: 2.5rem;
   min-height: calc(100vh - 4.75rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  display: none;
+}
+
+.hero-copy,
+.hero-visual {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -192,17 +235,47 @@ a:hover {
   max-width: 18ch;
 }
 
+.hero-rotator {
+  margin: 0.75rem 0 0;
+  color: #dbdbdb;
+  font-size: 0.98rem;
+}
+
+.rotator-label {
+  color: #a8a8a8;
+  margin-right: 0.4rem;
+}
+
+#rotating-role {
+  display: inline-flex;
+  align-items: center;
+  min-width: 18ch;
+  line-height: 1.35;
+}
+
 .hero-lead {
   color: var(--muted);
-  margin: 1rem 0 0;
+  margin: 0.8rem 0 0;
   max-width: 60ch;
+}
+
+.focus-badge {
+  margin: 1rem 0 0;
+  width: fit-content;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e5e5;
+  font-size: 0.88rem;
+  line-height: 1.35;
 }
 
 .cta-group {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  margin-top: 1.75rem;
+  margin-top: 1.25rem;
 }
 
 .btn {
@@ -219,7 +292,7 @@ a:hover {
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .btn-primary {
@@ -283,12 +356,22 @@ a:hover {
   gap: 1rem;
 }
 
+.skills-grid--five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
 .card {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
   border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 1.1rem;
   box-shadow: var(--shadow);
+  transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .card h3 {
@@ -313,10 +396,52 @@ a:hover {
 .pill-list li {
   font-size: 0.88rem;
   border-radius: 999px;
-  padding: 0.34rem 0.66rem;
+  padding: 0.38rem 0.74rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.08);
   color: #f0f0f0;
+  line-height: 1.25;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.featured-project {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.featured-image-wrap {
+  position: relative;
+}
+
+.featured-image-wrap img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+}
+
+.featured-content {
+  padding: 1rem;
+}
+
+.feature-list,
+.focus-list {
+  margin: 0.6rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.feature-list li,
+.focus-list li {
+  margin-bottom: 0.3rem;
 }
 
 .projects-grid {
@@ -333,16 +458,32 @@ a:hover {
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.26);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.5);
 }
 
 .project-card img {
   width: 100%;
-  height: 205px;
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: center;
 }
 
 .project-content {
   padding: 1rem;
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .project-content h3 {
@@ -353,6 +494,58 @@ a:hover {
 .project-content > p {
   color: var(--muted);
   margin: 0.65rem 0;
+}
+
+.case-study-tags {
+  list-style: none;
+  margin: 0 0 0.7rem;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.case-study-tags li {
+  font-size: 0.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 0.22rem 0.52rem;
+  color: #ececec;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.32rem 0.58rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status-live {
+  color: #f2f2f2;
+}
+
+.status-progress {
+  color: #e6e6e6;
+}
+
+.status-planned {
+  color: #c8c8c8;
+}
+
+.featured-image-wrap .status-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
 }
 
 .project-meta {
@@ -384,12 +577,50 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.timeline-item:first-child::before {
+  right: -1.275rem;
+}
+
+.timeline-item:last-child::before {
+  left: -1.275rem;
 }
 
 .timeline-meta {
   color: #d6d6d6;
   font-size: 0.9rem;
   margin-bottom: 0.65rem;
+}
+
+.current-focus-grid {
+  margin-top: 1rem;
 }
 
 .contact-card {
@@ -403,6 +634,13 @@ a:hover {
 .contact-card p {
   margin: 0 0 0.9rem;
   color: var(--muted);
+}
+
+.contact-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
 }
 
 .contact-list {
@@ -419,7 +657,8 @@ a:hover {
 
 .site-footer {
   border-top: 1px solid var(--border);
-  margin-top: 3rem;
+  margin-top: 2rem;
+  padding-bottom: 0.25rem;
 }
 
 .footer-inner {
@@ -443,6 +682,15 @@ a:hover {
   transform: translateY(0);
 }
 
+@keyframes moveGrid {
+  from {
+    background-position: center, center, 0 0, 0 0;
+  }
+  to {
+    background-position: center, center, 36px 36px, 36px 36px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -452,5 +700,13 @@ a:hover {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .hero-bg {
+    animation: none;
+  }
+
+  body::before {
+    animation: none;
   }
 }
