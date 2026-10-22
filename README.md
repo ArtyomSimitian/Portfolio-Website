@@ -1,69 +1,38 @@
-# ArtyomSimitian.com
+# artyomsimitian.com
 
-ArtyomSimitian.com is my personal portfolio website, created to showcase my projects, technical development, and professional journey as a Computer Science student and builder.
+Personal portfolio for Artyom Simitian: CS senior at CSU Northridge building backend
+systems, data pipelines, and algorithm visualizers.
 
-The site acts as a central hub for my work, bringing together portfolio projects, skills, experience, and personal branding in one place. It is designed to help visitors quickly understand what I build, how I think, and the kinds of opportunities I am working toward.
+**Live:** https://artyomsimitian.com
 
-## Live Site
+## Stack
 
-[ArtyomSimitian.com](https://artyomsimitian.com)
+Plain HTML, CSS, and vanilla JavaScript. No build step, no framework: open `index.html`
+or serve the folder with any static host.
 
-## About the Project
+- `index.html`: single page: hero, stack, projects, experience, about, contact
+- `style.css`: all styles (theme tokens in `:root`, responsive rules at the bottom)
+- `script.js`: the sorting-name hero (generator-based sorts), the six live project demos (canvas, SVG, DOM), active nav link
+- `assets/`: WebP images, favicon, résumé PDF
 
-This portfolio site was built to go beyond a traditional resume and present my work in a more complete, visual, and professional way. It allows me to highlight both technical projects and broader initiative, while giving employers and collaborators a better understanding of my background and goals.
+Fonts: Bricolage Grotesque for display text, IBM Plex Sans and Plex Mono for everything else, via Google Fonts.
 
-## Main Objectives
+## Updating content
 
-- Present my projects clearly and professionally
-- Build a strong online identity
-- Create a central place for my portfolio and experience
-- Support internship, job, and networking opportunities
-- Continue expanding the site as my work grows
+- **Add a project:** copy one `<article class="project">` block in `index.html` and edit the
+  `data-demo` name, stack line, title, description, and links. Demos live in `script.js` as `demos.<name>`; a static image works too: put it in
+  `assets/` as a ~1200 px-wide WebP.
+- **Change colors:** edit the tokens in `:root` in `style.css` (`--ink`, `--chalk`, `--coral`, `--sky`).
+- **Résumé:** replace `assets/Artyom Simitian Resume 2026.pdf` and update the two links that
+  point at it.
 
-## Project Highlights
+## Local preview
 
-The website may include:
-
-- a personal introduction
-- selected technical projects
-- portfolio case studies
-- skills and technologies
-- academic background
-- resume and experience content
-- contact information
-- responsive and modern UI
-
-## Tech Stack
-
-Built with a modern web development stack, which may include:
-
-- HTML
-- CSS
-- JavaScript
-- React
-- TypeScript
-- Tailwind CSS
-- Vite
-
-Replace this section with the exact technologies used in your implementation.
-
-## Why This Site Matters
-
-This site represents more than just completed projects. It reflects how I approach learning, building, and presenting my work. I wanted a portfolio that feels intentional, clear, and professional, while also giving me room to keep adding new projects and refining my personal brand over time.
-
-## Future Plans
-
-- add more detailed project breakdowns
-- improve project storytelling
-- refine mobile responsiveness
-- expand SEO and metadata
-- add writing or blog content
-- continue updating the site as new work is completed
-
-## Author
-
-**Artyom Simitian**
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
 
 ## License
 
-This project is intended for personal portfolio use.
+Personal portfolio: content and images © Artyom Simitian. Feel free to borrow the structure.
