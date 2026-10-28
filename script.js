@@ -6,18 +6,23 @@
   "use strict";
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const css = getComputedStyle(document.documentElement);
   // Palette the demos draw with (names kept from the first theme):
   // chalk = text, coral = accent (blue), sky = warm (orange),
-  // ink = surface, inkDeep = inset well.
-  const C = {
-    chalk: css.getPropertyValue("--text").trim() || "#2f3850",
-    chalk45: "rgba(47,56,80,0.45)",
-    coral: css.getPropertyValue("--accent").trim() || "#3d5be0",
-    sky: css.getPropertyValue("--warm").trim() || "#f0813f",
-    ink: css.getPropertyValue("--surface").trim() || "#e3e8f0",
-    inkDeep: css.getPropertyValue("--well").trim() || "#d7dde7",
+  // ink = surface, inkDeep = inset well. Re-read when the theme flips.
+  const C = {};
+  const readPalette = () => {
+    const css = getComputedStyle(document.documentElement);
+    const v = (name, fb) => css.getPropertyValue(name).trim() || fb;
+    const isDark = css.getPropertyValue("color-scheme").trim() === "dark";
+    C.chalk = v("--text", "#2f3850");
+    C.chalk45 = isDark ? "rgba(243,239,228,0.45)" : "rgba(47,56,80,0.45)";
+    C.coral = v("--accent", "#3d5be0");
+    C.sky = v("--warm", "#f0813f");
+    C.ink = v("--surface", "#e3e8f0");
+    C.inkDeep = v("--well", "#d7dde7");
+    C.accentFill = v("--accent-fill", "#c9d4ff");
   };
+  readPalette();
 
   const shuffle = (arr) => {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -555,7 +560,7 @@
         edges.forEach(([u, v, w], i) => {
           if (sub.has(u) !== sub.has(v)) { val += w; edgeEls[i].line.setAttribute("stroke", C.chalk); edgeEls[i].line.setAttribute("stroke-width", 2.2); }
         });
-        sub.forEach((id) => nodeEls[id].circ.setAttribute("fill", "#c9d4ff"));
+        sub.forEach((id) => nodeEls[id].circ.setAttribute("fill", C.accentFill));
         q++;
         readout.textContent = `cut query ${q}:  cut(S) = ${val}`;
         timer = setTimeout(tick, 260);
@@ -707,23 +712,60 @@
     };
   };
 
-  /* Wire demos to visibility */
-  const instances = [];
-  document.querySelectorAll(".project[data-demo]").forEach((art) => {
-    const make = demos[art.dataset.demo];
-    if (make) instances.push({ el: art, demo: make(art) });
-  });
+  /* Wire demos to visibility. Demos are rebuilt when the theme changes so
+     canvas and SVG drawings pick up the new palette. */
+  const roots = Array.from(document.querySelectorAll(".project[data-demo]"));
+  const visible = new Set();
+  let instances = new Map();
+  const build = () => {
+    instances.forEach((d) => d.stop());
+    instances = new Map();
+    roots.forEach((art) => {
+      const make = demos[art.dataset.demo];
+      if (make) instances.set(art, make(art));
+    });
+    visible.forEach((art) => { const d = instances.get(art); if (d) d.start(); });
+  };
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => {
-        const inst = instances.find((x) => x.el === e.target);
-        if (!inst) return;
-        if (e.isIntersecting) inst.demo.start(); else inst.demo.stop();
+        const d = instances.get(e.target);
+        if (e.isIntersecting) { visible.add(e.target); if (d) d.start(); }
+        else { visible.delete(e.target); if (d) d.stop(); }
       }),
       { threshold: 0.25 }
     );
-    instances.forEach((x) => io.observe(x.el));
-  } else instances.forEach((x) => x.demo.start());
+    roots.forEach((art) => io.observe(art));
+  } else roots.forEach((art) => visible.add(art));
+  build();
+
+  /* Theme toggle: light / dark, remembered per browser */
+  const toggle = document.getElementById("theme-toggle");
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+  const currentTheme = () => document.documentElement.getAttribute("data-theme") || (systemDark.matches ? "dark" : "light");
+  const reflectTheme = () => {
+    const theme = currentTheme();
+    if (toggle) toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    if (metaTheme) metaTheme.setAttribute("content", theme === "dark" ? "#1b1816" : "#e3e8f0");
+    readPalette();
+    build();
+  };
+  if (toggle) {
+    reflectTheme();
+    toggle.addEventListener("click", () => {
+      const next = currentTheme() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      reflectTheme();
+    });
+    // follow the system only while the visitor hasn't chosen
+    systemDark.addEventListener("change", () => {
+      let saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (e) {}
+      if (!saved) { document.documentElement.removeAttribute("data-theme"); reflectTheme(); }
+    });
+  }
 
   /* Active nav link */
   const navLinks = Array.from(document.querySelectorAll(".topbar nav a[href^='#']"));
