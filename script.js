@@ -7,13 +7,16 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css = getComputedStyle(document.documentElement);
+  // Palette the demos draw with (names kept from the first theme):
+  // chalk = text, coral = accent (blue), sky = warm (orange),
+  // ink = surface, inkDeep = inset well.
   const C = {
-    chalk: css.getPropertyValue("--chalk").trim() || "#f3efe4",
-    chalk45: "rgba(243,239,228,0.45)",
-    coral: css.getPropertyValue("--coral").trim() || "#ff5c38",
-    sky: css.getPropertyValue("--sky").trim() || "#8ed0ff",
-    ink: css.getPropertyValue("--ink").trim() || "#0c1a4a",
-    inkDeep: css.getPropertyValue("--ink-deep").trim() || "#071034",
+    chalk: css.getPropertyValue("--text").trim() || "#2f3850",
+    chalk45: "rgba(47,56,80,0.45)",
+    coral: css.getPropertyValue("--accent").trim() || "#3d5be0",
+    sky: css.getPropertyValue("--warm").trim() || "#f0813f",
+    ink: css.getPropertyValue("--surface").trim() || "#e3e8f0",
+    inkDeep: css.getPropertyValue("--well").trim() || "#d7dde7",
   };
 
   const shuffle = (arr) => {
@@ -22,6 +25,58 @@
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
+  };
+
+  /* =====================================================================
+     Tokenizer. A small BPE-flavoured splitter: words keep their leading
+     space (GPT style), long words break at common prefixes/suffixes, and
+     anything left over is chunked. Purely visual; it hints at how a
+     language model sees text.
+     ===================================================================== */
+  const PREFIXES = ["un", "re", "pre", "de", "dis", "over", "under", "inter", "sub", "back", "data", "pipe", "soft", "micro", "work", "intern"];
+  const SUFFIXES = ["ing", "tion", "ment", "ness", "able", "ible", "ance", "ence", "ical", "ally", "ship", "ous", "ive", "ful", "less", "ers", "er", "ed", "ly", "es", "s"];
+  const splitWord = (w) => {
+    if (w.length <= 5) return [w];
+    const lower = w.toLowerCase();
+    for (const p of PREFIXES) if (lower.startsWith(p) && w.length - p.length >= 3) return [w.slice(0, p.length), ...splitWord(w.slice(p.length))];
+    for (const x of SUFFIXES) if (lower.endsWith(x) && w.length - x.length >= 3) return [...splitWord(w.slice(0, w.length - x.length)), w.slice(w.length - x.length)];
+    const parts = Math.ceil(w.length / 4), size = Math.ceil(w.length / parts), out = [];
+    for (let i = 0; i < w.length; i += size) out.push(w.slice(i, i + size));
+    return out;
+  };
+  const tokenize = (text) => {
+    const tokens = []; // {text, start, end}
+    const re = /(\s*)([A-Za-z0-9'’]+|[^\sA-Za-z0-9]+)/g;
+    let m;
+    while ((m = re.exec(text))) {
+      const lead = m[1], core = m[2];
+      let pos = m.index;
+      const pieces = /^[A-Za-z0-9'’]/.test(core) ? splitWord(core) : [core];
+      pieces.forEach((piece, i) => {
+        const t = (i === 0 ? lead : "") + piece;
+        tokens.push({ text: t, start: pos, end: pos + t.length });
+        pos += t.length;
+      });
+    }
+    return tokens;
+  };
+  // Renders tokens into `el` with a staggered reveal. Returns the spans.
+  const renderTokens = (el, text, { stagger = 22, instant = false } = {}) => {
+    const tokens = tokenize(text);
+    const frag = document.createDocumentFragment();
+    const spans = tokens.map((t, i) => {
+      const span = document.createElement("span");
+      span.className = `tok tok-${i % 4}` + (instant ? " is-in" : "");
+      span.textContent = t.text;
+      span.dataset.start = t.start;
+      span.dataset.end = t.end;
+      if (!instant) span.style.transitionDelay = `${i * stagger}ms`;
+      frag.appendChild(span);
+      return span;
+    });
+    el.replaceChildren(frag);
+    if (!instant) requestAnimationFrame(() => requestAnimationFrame(() => spans.forEach((s) => s.classList.add("is-in"))));
+    return spans;
   };
 
   /* =====================================================================
@@ -134,46 +189,22 @@
       h1.appendChild(el);
       return el;
     });
-    // Slots are sized to the real glyph widths of the *sorted* name, so the
-    // finished state reads like set type rather than a monospace grid.
-    const slotX = new Array(n).fill(0);
-    const slotW = new Array(n).fill(0);
-    const ownW = new Array(n).fill(0);
+    // Letters live in uniform blocks on a grid: TILE wide, GAP apart (in em).
+    const TILE = 1.3, GAP = 0.12;
     const place = (tile, idx) => {
       const s = letters[idx];
-      const k = tiles.indexOf(tile);
-      // a wide letter in a narrow slot squeezes to fit instead of overlapping
-      const sx = ownW[k] > slotW[idx] ? slotW[idx] / ownW[k] : 1;
       tile.style.setProperty("--row", s.row);
-      tile.style.setProperty("--x", `${slotX[idx]}px`);
-      tile.style.setProperty("--sx", sx.toFixed(3));
+      tile.style.setProperty("--col", s.col);
     };
     const fit = () => {
-      const probe = document.createElement("span");
-      probe.style.cssText = "position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:0";
-      h1.appendChild(probe);
-      const widths = letters.map((l) => { probe.textContent = l.char; return probe.getBoundingClientRect().width; });
-      probe.remove();
-      widths.forEach((w, i) => (ownW[i] = w));
+      h1.style.fontSize = "";
       const fs = parseFloat(getComputedStyle(h1).fontSize);
-      const track = fs * 0.04; // a touch of tracking between tiles
-      let maxRow = 0;
-      words.forEach((w, row) => {
-        let x = 0;
-        letters.forEach((l, i) => { if (l.row === row) { slotX[i] = x; slotW[i] = widths[i]; x += widths[i] + track; } });
-        maxRow = Math.max(maxRow, x);
-      });
-      // if the longest row overflows, scale the whole word down via font-size
+      const needed = (longest * TILE + (longest - 1) * GAP) * fs;
       const avail = h1.clientWidth;
-      if (maxRow > avail) {
-        h1.style.fontSize = `${fs * (avail / maxRow) * 0.98}px`;
-        return fit();
-      }
-      tiles.forEach((t, k) => { const idx = current.indexOf(k); if (idx >= 0) place(t, idx); });
+      if (needed > avail) h1.style.fontSize = `${(avail / (longest * TILE + (longest - 1) * GAP)).toFixed(2)}px`;
     };
     let current = letters.map((l) => l.key);
-    window.addEventListener("resize", () => { h1.style.fontSize = ""; fit(); });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    window.addEventListener("resize", fit);
 
     const elCompares = document.getElementById("c-compares");
     const elSwaps = document.getElementById("c-swaps");
@@ -181,6 +212,33 @@
     const btns = Array.from(document.querySelectorAll(".algo"));
     let algo = "bubble";
     let run = 0;
+
+    // The sentence under the name can be read the way a language model
+    // reads it, token by token, on request. The button toggles it back.
+    const lede = document.getElementById("lede");
+    const ledeCount = document.getElementById("lede-count");
+    const tokenizeBtn = document.getElementById("tokenize");
+    if (lede && tokenizeBtn) {
+      const plain = lede.textContent.trim().replace(/\s+/g, " ");
+      let tokenized = false;
+      tokenizeBtn.addEventListener("click", () => {
+        tokenized = !tokenized;
+        tokenizeBtn.setAttribute("aria-pressed", String(tokenized));
+        if (tokenized) {
+          const spans = renderTokens(lede, plain, { stagger: 24, instant: reduceMotion });
+          tokenizeBtn.textContent = "Show plain text";
+          if (ledeCount) {
+            ledeCount.textContent = `${spans.length} tokens`;
+            ledeCount.style.transitionDelay = reduceMotion ? "0ms" : `${spans.length * 24 + 120}ms`;
+            requestAnimationFrame(() => ledeCount.classList.add("is-in"));
+          }
+        } else {
+          lede.textContent = plain;
+          tokenizeBtn.textContent = "Tokenize this sentence";
+          if (ledeCount) { ledeCount.classList.remove("is-in"); ledeCount.style.transitionDelay = "0ms"; }
+        }
+      });
+    }
 
     const render = (a) => { current = a; a.forEach((k, idx) => place(tiles[k], idx)); };
 
@@ -338,7 +396,7 @@
       if ((v >= 200 || h === 23) && start !== null) { windows.push([start, v < 200 ? h : h - 1]); start = null; }
     });
     windows.forEach(([a, b]) => g.appendChild(el("rect", {
-      x: x(a), y: T, width: x(b) - x(a) + pw / 23, height: ph, fill: C.sky, opacity: 0.12,
+      x: x(a), y: T, width: x(b) - x(a) + pw / 23, height: ph, fill: C.coral, opacity: 0.12,
     })));
     // axes
     for (let v = 0; v <= 400; v += 200) {
@@ -353,7 +411,7 @@
     g.appendChild(el("path", { d: `${d} L${x(23)},${y(0)} L${x(0)},${y(0)} Z`, fill: C.chalk, opacity: 0.05 }));
     g.appendChild(el("path", { d, fill: "none", stroke: C.chalk, "stroke-width": 1.5 }));
     g.appendChild(el("text", { x: L, y: 28, fill: C.chalk, "font-size": 14, "font-family": "IBM Plex Mono, monospace" }, "grid carbon intensity, gCO2/kWh, next 24h"));
-    g.appendChild(el("text", { x: L, y: 46, fill: C.sky, "font-size": 12, "font-family": "IBM Plex Mono, monospace" }, "shaded: low-carbon windows"));
+    g.appendChild(el("text", { x: L, y: 46, fill: C.coral, "font-size": 12, "font-family": "IBM Plex Mono, monospace" }, "shaded: low-carbon windows"));
     // jobs: [name, original hour, duration h, target hour, kg saved]
     const jobs = [
       ["nightly-etl", 19, 3, 11, 14.2],
@@ -480,7 +538,7 @@
           line.setAttribute("stroke-dasharray", "6 5"); label.setAttribute("fill", C.coral);
         }
       });
-      S.forEach((id) => { nodeEls[id].circ.setAttribute("fill", C.sky); nodeEls[id].txt.setAttribute("fill", C.inkDeep); });
+      S.forEach((id) => { nodeEls[id].circ.setAttribute("fill", C.sky); nodeEls[id].txt.setAttribute("fill", C.chalk); });
       readout.textContent = `min s-t cut = ${total}  ·  S = {${[...S].join(", ")}}`;
     };
     const play = () => {
@@ -497,7 +555,7 @@
         edges.forEach(([u, v, w], i) => {
           if (sub.has(u) !== sub.has(v)) { val += w; edgeEls[i].line.setAttribute("stroke", C.chalk); edgeEls[i].line.setAttribute("stroke-width", 2.2); }
         });
-        sub.forEach((id) => nodeEls[id].circ.setAttribute("fill", "#1e3a8a"));
+        sub.forEach((id) => nodeEls[id].circ.setAttribute("fill", "#c9d4ff"));
         q++;
         readout.textContent = `cut query ${q}:  cut(S) = ${val}`;
         timer = setTimeout(tick, 260);
@@ -531,20 +589,22 @@
     let running = false, timer, i = 0;
     const score = (text, words) => Math.min(100, words.filter((w) => text.toLowerCase().includes(w)).length * 34);
     const statusEl = root.querySelector(".audit-status");
+    const countEl = root.querySelector(".audit-count");
+    const matchRanges = (text) => {
+      const lower = text.toLowerCase(), ranges = [];
+      [].concat(...Object.values(keys)).forEach((w) => {
+        let at = lower.indexOf(w);
+        while (at >= 0) { ranges.push([at, at + w.length]); at = lower.indexOf(w, at + 1); }
+      });
+      return ranges;
+    };
     const show = () => {
       if (!running) return;
       const { text, applies } = samples[i % samples.length];
-      const frag = document.createDocumentFragment();
-      const all = [].concat(...Object.values(keys));
-      const re = new RegExp(`(${all.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "gi");
-      text.split(re).forEach((part) => {
-        if (!part) return;
-        const hit = all.some((w) => w.toLowerCase() === part.toLowerCase());
-        const span = document.createElement(hit ? "mark" : "span");
-        span.textContent = part;
-        frag.appendChild(span);
-      });
-      textEl.replaceChildren(frag);
+      const which = `${(i % samples.length) + 1} of ${samples.length}`;
+      // 1. tokenize the response
+      const spans = renderTokens(textEl, text, { stagger: 20, instant: reduceMotion });
+      if (countEl) countEl.textContent = `${spans.length} tokens`;
       Object.keys(keys).forEach((k) => {
         const on = applies.includes(k);
         rows[k].bar.style.width = "0%";
@@ -552,22 +612,35 @@
         rows[k].num.classList.remove("is-flag");
         rows[k].num.parentElement.classList.toggle("is-na", !on);
       });
-      if (statusEl) { statusEl.textContent = `scoring response ${(i % samples.length) + 1} of ${samples.length}`; statusEl.classList.remove("is-flag"); }
+      if (statusEl) { statusEl.textContent = `tokenizing response ${which}`; statusEl.classList.remove("is-flag"); }
+      const tokenMs = reduceMotion ? 0 : spans.length * 20 + 200;
+      // 2. light up the tokens that match a keyword
       timer = setTimeout(() => {
-        let flagged = [];
-        applies.forEach((k) => {
-          const s = score(text, keys[k]);
-          rows[k].bar.style.width = `${s}%`;
-          rows[k].num.textContent = s;
-          if (s === 0) { rows[k].num.classList.add("is-flag"); flagged.push(k); }
+        if (!running) return;
+        const ranges = matchRanges(text);
+        spans.forEach((sp) => {
+          const a = +sp.dataset.start, b = +sp.dataset.end;
+          if (ranges.some(([x, y]) => a < y && b > x)) sp.classList.add("is-key");
         });
-        if (statusEl) {
-          statusEl.textContent = flagged.length ? `flagged: ${flagged.join(", ")}` : "passes";
-          statusEl.classList.toggle("is-flag", flagged.length > 0);
-        }
-        i++;
-        timer = setTimeout(show, 3600);
-      }, 800);
+        if (statusEl) statusEl.textContent = `scoring response ${which}`;
+        // 3. score
+        timer = setTimeout(() => {
+          if (!running) return;
+          let flagged = [];
+          applies.forEach((k) => {
+            const sc = score(text, keys[k]);
+            rows[k].bar.style.width = `${sc}%`;
+            rows[k].num.textContent = sc;
+            if (sc === 0) { rows[k].num.classList.add("is-flag"); flagged.push(k); }
+          });
+          if (statusEl) {
+            statusEl.textContent = flagged.length ? `flagged: ${flagged.join(", ")}` : "passes";
+            statusEl.classList.toggle("is-flag", flagged.length > 0);
+          }
+          i++;
+          timer = setTimeout(show, 3400);
+        }, 700);
+      }, tokenMs + 300);
     };
     return {
       start() { if (running) return; running = true; if (reduceMotion) { i = 0; } show(); },

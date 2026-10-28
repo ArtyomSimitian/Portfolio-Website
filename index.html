@@ -9,7 +9,7 @@
       content="Artyom Simitian is a Computer Science senior at CSUN who builds backend systems, data pipelines, and algorithm visualizers. Open to Summer 2027 software engineering internships."
     />
     <meta name="author" content="Artyom Simitian" />
-    <meta name="theme-color" content="#0c1a4a" />
+    <meta name="theme-color" content="#e3e8f0" />
     <link rel="canonical" href="https://artyomsimitian.com/" />
 
     <meta property="og:type" content="website" />
@@ -28,10 +28,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=4" />
+    <link rel="stylesheet" href="style.css?v=6" />
 
     <script type="application/ld+json">
       {
@@ -87,11 +87,15 @@
           </dl>
         </div>
 
-        <p class="hero-lede">
+        <p class="hero-lede" id="lede">
           I build backend systems, data pipelines, and tools that make algorithms visible.
           Right now I'm a Catalog Data Intern at FCP Euro and looking for a Summer 2027
           software engineering internship.
         </p>
+        <div class="lede-tools">
+          <button type="button" class="tokenize-btn" id="tokenize" aria-pressed="false">Tokenize this sentence</button>
+          <span class="lede-count" id="lede-count" aria-live="polite"></span>
+        </div>
       </section>
 
       <!-- =================== WORK =================== -->
@@ -172,7 +176,7 @@
                 <div class="audit-row" data-key="fairness"><span>fairness</span><span class="audit-bar"><i></i></span><b>0</b></div>
                 <div class="audit-row" data-key="safety"><span>safety</span><span class="audit-bar"><i></i></span><b>0</b></div>
               </div>
-              <p class="audit-foot"><span class="audit-status">scoring</span> · keyword scoring, offline, illustrative responses</p>
+              <p class="audit-foot"><span class="audit-status">tokenizing</span> · <span class="audit-count">0 tokens</span> · keyword scoring, offline, illustrative responses</p>
             </div>
           </div>
           <div class="project-text">
@@ -225,9 +229,9 @@
             <p class="project-when">2025 · JavaScript, Canvas</p>
             <h3>Pong</h3>
             <p>
-              Browser Pong with a fixed-timestep game loop, keyboard controls,
-              and paddle and ball collision logic. One of my earliest projects,
-              kept alive by nostalgia, questionable code, and the fact that it somehow still works.
+              Browser Pong with a fixed-timestep game loop, keyboard controls, and paddle and ball
+              collision logic. One of my earliest projects, kept alive by nostalgia, questionable
+              code, and the fact that it somehow still works.
             </p>
             <p class="project-links">
               <a href="https://pongameartyomsimitian.netlify.app" target="_blank" rel="noopener noreferrer">Play it</a>
@@ -296,7 +300,8 @@
             Outside of class I build small, finished things, because shipping is where the
             learning sticks. This site is one of them. The sorting in the header works the same
             way my visualizer does: a generator emits compare and swap events, and the page
-            replays them.
+            replays them. The sentence under it is split up the way a language model tokenizes
+            text, which is a small nod to the AI work I want to do more of.
           </p>
         </div>
       </section>
@@ -308,7 +313,7 @@
         <p class="contact-links">
           <a href="https://github.com/ArtyomSimitian" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://linkedin.com/in/artyom-simitian" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="./assets/Artyom Simitian Resume 2026.pdf" target="_blank" rel="noopener noreferrer">Résumé (PDF)</a>
+          <a class="is-primary" href="./assets/Artyom Simitian Resume 2026.pdf" target="_blank" rel="noopener noreferrer">Résumé (PDF)</a>
         </p>
       </section>
     </main>
@@ -318,6 +323,6 @@
       <span>Built by hand with HTML, CSS, and JavaScript. No frameworks.</span>
     </footer>
 
-    <script src="script.js?v=4" defer></script>
+    <script src="script.js?v=6" defer></script>
   </body>
 </html>

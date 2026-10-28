@@ -15,14 +15,14 @@ or serve the folder with any static host.
 - `script.js`: the sorting-name hero (generator-based sorts), the six live project demos (canvas, SVG, DOM), active nav link
 - `assets/`: WebP images, favicon, résumé PDF
 
-Fonts: Bricolage Grotesque for display text, IBM Plex Sans and Plex Mono for everything else, via Google Fonts.
+Fonts: Manrope for display and body text, IBM Plex Mono for data labels, via Google Fonts.
 
 ## Updating content
 
 - **Add a project:** copy one `<article class="project">` block in `index.html` and edit the
   `data-demo` name, stack line, title, description, and links. Demos live in `script.js` as `demos.<name>`; a static image works too: put it in
   `assets/` as a ~1200 px-wide WebP.
-- **Change colors:** edit the tokens in `:root` in `style.css` (`--ink`, `--chalk`, `--coral`, `--sky`).
+- **Change colors:** edit the tokens in `:root` in `style.css` (`--surface`, `--text`, `--accent` blue, `--warm` orange). The soft shadows come from `--shade` and `--light`.
 - **Résumé:** replace `assets/Artyom Simitian Resume 2026.pdf` and update the two links that
   point at it.
 
